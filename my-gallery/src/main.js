@@ -9,7 +9,7 @@ import VueLazyload from 'vue-lazyload'
 Vue.config.productionTip = false
 
 Vue.use(VueLazyload, {
-  preLoad: 1.3,
+  preLoad: 1.2,
   error: 'dist/error.png',
   loading: './assets/loading.gif',
   attempt: 1

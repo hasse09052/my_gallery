@@ -1,11 +1,13 @@
 <template>
-  <main>
-    <figure v-for="item in images" v-bind:key="item.id">
-      <router-link v-bind:to="{name: 'about', params:{id: item.id}}" class="testClass">
-        <img v-lazy="item.url" alt />
-        <p>{{item.postDatetime}}</p>
-      </router-link>
-    </figure>
+  <main class="home">
+    <div class="home__container">
+      <figure v-for="item in images" v-bind:key="item.id" class="home__imgWrap">
+        <router-link v-bind:to="{name: 'about', params:{id: item.id}}" class="home__link">
+          <img v-lazy="item.url" v-bind:alt="item.title" class="home__img" />
+          <!-- <p>{{item.postDatetime}}</p> -->
+        </router-link>
+      </figure>
+    </div>
   </main>
 </template>
 
@@ -30,3 +32,33 @@ export default {
   }
 };
 </script>
+
+<style lang="scss" scoped>
+.home {
+  &__container {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0 3.5%;
+  }
+
+  &__imgWrap {
+    width: calc(100% / 7);
+    padding: 3px;
+    margin: 0;
+
+    @media screen and (max-width: 768px) {
+      width: calc(100% / 4);
+    }
+  }
+
+  &__img {
+    width: 100%;
+    height: calc(100vw / 7);
+    object-fit: cover;
+
+    @media screen and (max-width: 768px) {
+      height: calc((100vw) / 4);
+    }
+  }
+}
+</style>
